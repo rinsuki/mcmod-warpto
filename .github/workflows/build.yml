@@ -15,5 +15,5 @@ jobs:
       - run: ./gradlew jar
       - uses: actions/upload-artifact@v1
         with:
-          name: jar
-          path: build/libs
+          name: warpto-1.0.jar
+          path: build/libs/warpto-1.0.jar
