@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  pull_request:
+    branches-ignore:
+      - "renovate/**"
+  push:
+    branches:
+      - master
+      - "renovate/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ./gradlew setupCiWorkspace
+      - run: ./gradlew jar
+      - uses: actions/upload-artifact@v1
+        with:
+          name: jar
+          path: build/libs
