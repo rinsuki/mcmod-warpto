@@ -1,0 +1,16 @@
+[
+{
+  "modid": "warpto",
+  "name": "Warpto Command",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["rinsuki"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
