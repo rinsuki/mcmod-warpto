@@ -2,12 +2,9 @@ name: Build
 
 on:
   pull_request:
-    branches-ignore:
-      - "renovate/**"
   push:
     branches:
       - master
-      - "renovate/**"
 
 jobs:
   build:
