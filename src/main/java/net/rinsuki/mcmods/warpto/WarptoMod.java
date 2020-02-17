@@ -4,7 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = WarptoMod.MODID, name = WarptoMod.NAME, version = WarptoMod.VERSION)
+@Mod(modid = WarptoMod.MODID, name = WarptoMod.NAME, version = WarptoMod.VERSION, acceptableRemoteVersions = "*")
 public class WarptoMod {
     public static final String MODID = "warpto";
     public static final String NAME = "Warp Command";
