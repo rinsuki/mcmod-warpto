@@ -16,9 +16,9 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: warpto-deobf
-          path: build/libs/warpto-1.0.jar
+          path: build/libs/warpto-*.jar
       - run: ./gradlew reobfJar
       - uses: actions/upload-artifact@v1
         with:
           name: warpto
-          path: build/libs/warpto-1.0.jar
+          path: build/libs/warpto-*.jar

@@ -7,6 +7,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
       - uses: actions/checkout@v2
       - run: ./gradlew setupCiWorkspace
       - run: ./gradlew jar
@@ -16,15 +19,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${{ steps.get_version.outputs.VERSION }}
           draft: true
       - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/warpto-${{ github.ref }}.jar
-          asset_name: warpto-${{ github.ref }}-deobf.jar
+          asset_path: ./build/libs/warpto-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_name: warpto-${{ steps.get_version.outputs.VERSION }}-deobf.jar
           asset_content_type: application/java-archive
       - run: ./gradlew reobfJar
       - uses: actions/upload-release-asset@v1
@@ -32,8 +35,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/warpto-${{ github.ref }}.jar
-          asset_name: warpto-${{ github.ref }}.jar
+          asset_path: ./build/libs/warpto-${{ steps.get_version.outputs.VERSION }}.jar
+          asset_name: warpto-${{ steps.get_version.outputs.VERSION }}.jar
           asset_content_type: application/java-archive
 
       
