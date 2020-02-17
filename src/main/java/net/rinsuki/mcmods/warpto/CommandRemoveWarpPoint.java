@@ -9,7 +9,7 @@ public class CommandRemoveWarpPoint extends CommandBaseWithTabCompletion {
 
     @Override
     public String getName() {
-        return "rmwarpoint";
+        return "rmwarppoint";
     }
 
     @Override
